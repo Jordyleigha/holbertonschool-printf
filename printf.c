@@ -40,6 +40,12 @@ int _printf(const char *format, ...)
                 putchar('%');
                 count++;
             }
+            else
+            {
+                putchar('%'); // Print the '%' character as-is
+                putchar(*format); // Print the invalid character after '%'
+                count += 2; // Increment count by 2 for both characters
+            }
         }
         else
         {
