@@ -17,3 +17,12 @@ int _printf(const char *format, ...)
         // Loop through the format string until the end is reached ('\0')
         while (*format != '\0')
         {
+          if (*format == '%') // If '%' is encountered, indicating a format specifier
+          {
+              format++; // Move to the next character after '%'
+              if (*format == 'c') // If the format specifier is '%c' (character)
+              {
+                  char c = va_arg(args, int); // Get the character argument from the list
+                  putchar(c); // Print the character
+                  count++; // Increment the character count
+              }
