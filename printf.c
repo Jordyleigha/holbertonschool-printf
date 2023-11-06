@@ -1,7 +1,8 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+#include <stdlib.h>
+#include <stddef.h>
 /**
  * _printf - prints a provided string plus a list of variadic arguments
  * @format: the provided string with format specifiers
@@ -10,69 +11,43 @@
  */
 int _printf(const char *format, ...)
 {
-    int count = 0;
-    va_list args;
-    va_start(args, format);
-    while (*format != '\0')
-    {
-        if (*format == '%')
-        {
-            format++;
-            if (*format == 'c')
-            {
-                char c = va_arg(args, int);
-                putchar(c);
-                count++;
-            }
-            else if (*format == 's')
-            {
-                char *str = va_arg(args, char*);
-                while (*str != '\0')
-                {
-                    putchar(*str);
-                    str++;
-                    count++;
-                }
-            }
-            else if (*format == '%')
-            {
-                putchar('%');
-                count++;
-            }
-        }
-        else
-        {
-            putchar(*format);
-            count++;
-        }
-        format++;
-    }
-    va_end(args);
-    return count;
-}
-
-int print_string(va_list ap)
-{
-	char *str = va_arg(ap, char*);
-	int len = 0;
-	int i;
-
-	if (str != NULL)
+	if (format != NULL)
 	{
-		len = strlen(str);
-		for (i = 0; i < len; i++)
+		int count = 0, i;
+		int (*m)(va_list);
+		va_list args;
+
+		va_start(args, format);
+		i = 0;
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+		while (format != NULL && format[i] != '\0')
 		{
-			putchar(str[i]);
+			if (format[i] == '%')
+			{
+				if (format[i + 1] == '%')
+				{
+					count += _putchar(format[i]);
+					i += 2;
+				}
+				else
+				{
+					m = get_func(format[i + 1]);
+					if (m)
+						count += m(args);
+					else
+						count = _putchar(format[i]) + _putchar(format[i + 1]);
+					i += 2;
+				}
+			}
+			else
+			{
+				count += _putchar(format[i]);
+				i++;
+			}
 		}
+		va_end(args);
+		return (count);
 	}
-	else
-	{
-		str = "(null)";
-		len = 6;
-		for (i = 0; i < len; i++)
-		{
-			putchar(str[i]);
-		}
-	}
-	return (len);
+	return (-1);
 }
