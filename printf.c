@@ -51,47 +51,29 @@ int _printf(const char *format, ...)
     va_end(args);
     return count;
 }
-=======
 
-int _printf(const char *format, ...)
+int print_string(va_list ap)
 {
-	int count = 0;
-	va_list args;
-	va_start(args, format);
-	while (*format != '\0')
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == 'c')
-			{
-				char c = va_arg(args, int);
-				putchar(c);
-				count++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_args(args, char*);
-				while (*str != '\0')
-				{
-					putchar(*str);
-					str++;
-					count++;
-				}
-			}
-			else if (*format == '%')
-			{
-				putchar('%');
-				count++;
-			}
+	char *str = va_arg(ap, char*);
+	int len = 0;
+	int i;
 
-		else
+	if (str != NULL)
+	{
+		len = strlen(str);
+		for (i = 0; i < len; i++)
 		{
-			putchar(*format);
-			count++;
+			putchar(str[i]);
 		}
-		format++;
 	}
-	va_end(args);
-	return count;
+	else
+	{
+		str = "(null)";
+		len = 6;
+		for (i = 0; i < len; i++)
+		{
+			putchar(str[i]);
+		}
 	}
+	return (len);
+}
