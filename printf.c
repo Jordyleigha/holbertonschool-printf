@@ -8,7 +8,6 @@
  *
  * Return: the number of characters in the string
  */
-
 int _printf(const char *format, ...)
 {
     int count = 0;
