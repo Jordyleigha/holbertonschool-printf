@@ -1,0 +1,45 @@
+.\" Manpage for our _printf Project
+.\"
+.TH man 3 "01 November 2023" "1.0" "_printf Project man page"
+.SH NAME
+._printf
+\- This function produces output according to a format.
+.SH SYNOPSIS
+#include "main.h"
+
+int _printf(const char *format, ...)
+
+_printf[argument]...
+
+.SH DESCRIPTION
+The printf function prints numerical values or characters of the format specifiers passed to it in the argument.
+
+Return: The number of characters printed (excluding the null byte used to end output string).
+
+Conversion specifiers: There are many different conversion specifiers that can be used for various data types.
+
+%c - print a single character.
+
+%s - print a string.
+
+%d - print a integer as a signed decimal (base 10) number.
+
+%i - print same as "d", integer in base 10.
+
+% - print a percent sign (%).
+
+A conversion specifier begins with a percent sign and ends with the conversion characters shown above.
+
+.SH For example:
+
+_printf("Character: %c", character);
+
+_printf("string: %s", string);
+
+_printf("Integer: %d", integer); (or use "%i" for print integer)
+
+.SH SEE ALSO
+printf(1), printf(3), puts(3), scanf(3);
+
+.SH AUTHORS
+Jordan Arguelles and Ivonne Lopez
