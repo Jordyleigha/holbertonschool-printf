@@ -5,3 +5,6 @@
 
 /* Custom data structure to represent the format specifier */
 typedef struct {
+    char spec;  /* Format specifier character ('c', 's', or '%') */
+    int (*func)(va_list);  /* Function pointer for the corresponding print function */
+} FormatSpecifier;
