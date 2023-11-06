@@ -21,13 +21,13 @@ int _printf(const char *format, ...)
             format++;
             if (*format == 'c')
             {
-                char c = va_arg(args, int); // Correct usage of va_arg for %c
+                char c = va_arg(args, int);
                 putchar(c);
                 count++;
             }
             else if (*format == 's')
             {
-                char *str = va_arg(args, char*); // Correct usage of va_arg for %s
+                char *str = va_arg(args, char*);
                 while (*str != '\0')
                 {
                     putchar(*str);
