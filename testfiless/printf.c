@@ -7,7 +7,7 @@
  * @format: the format string with format specifiers
  *
  * Return: number of characters in the final string
- */
+*/
 int _printf(const char *format, ...)
 {
 	int count = 0;
