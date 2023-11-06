@@ -27,3 +27,26 @@ int _printf(const char *format, ...)
                   putchar(c); // Print the character
                   count++; // Increment the character count
               }
+	      //If the format specifier is '%s'(string)
+	      else if(*format == 's')
+	  }
+	  //getting the string argument from the list
+	  char *str = va_args(args, char*);
+	  //Loop through the characters of the string
+	  while (*str != '\0')
+	  {
+		  //print each character of the string
+		  putchar(*str);
+		  str++;
+		  //Increment the character count
+		  count++;
+	  }
+	}
+	// If the format specifier is '%%'
+	else if (*format == '%')
+	{
+		//print the percent sign
+		putchar('%');
+		//Increment the character count
+		count++;
+	}
