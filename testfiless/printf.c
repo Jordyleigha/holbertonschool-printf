@@ -29,12 +29,10 @@ int _printf(const char *format, ...)
               }
 	      //If the format specifier is '%s'(string)
 	      else if(*format == 's')
-	  }
-	  //getting the string argument from the list
-	  char *str = va_args(args, char*);
-	  //Loop through the characters of the string
-	  while (*str != '\0')
-	  {
+	      {
+	        char *str = va_arg(args, char*); //getting the string argument from the list
+	        while (*str != '\0') //Loop through the characters of the string
+	        {
 		  //print each character of the string
 		  putchar(*str);
 		  str++;
