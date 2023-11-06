@@ -1,6 +1,14 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
+
+/**
+ * _printf - prints a provided string plus a list of variadic arguments
+ * @format: the provided string with format specifiers
+ *
+ * Return: the number of characters in the string
+ */
+
 int _printf(const char *format, ...)
 {
     int count = 0;
