@@ -21,13 +21,13 @@ int _printf(const char *format, ...)
             format++;
             if (*format == 'c')
             {
-                char c = va_arg(args, int);
+                char c = va_arg(args, int); // Correct usage of va_arg for %c
                 putchar(c);
                 count++;
             }
             else if (*format == 's')
             {
-                char *str = va_arg(args, char*);
+                char *str = va_arg(args, char*); // Correct usage of va_arg for %s
                 while (*str != '\0')
                 {
                     putchar(*str);
@@ -39,12 +39,6 @@ int _printf(const char *format, ...)
             {
                 putchar('%');
                 count++;
-            }
-            else
-            {
-                putchar('%'); // Print the '%' character as-is
-                putchar(*format); // Print the invalid character after '%'
-                count += 2; // Increment count by 2 for both characters
             }
         }
         else
