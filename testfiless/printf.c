@@ -50,3 +50,15 @@ int _printf(const char *format, ...)
 		//Increment the character count
 		count++;
 	}
+        }
+            else if (*format == '%') // If the format specifier is '%%' (percent symbol)
+            {
+                putchar('%'); // Print '%' character
+                count++; // Increment the character count
+            }
+            format++; // Move to the next character in the format string
+    }
+
+    va_end(args); // Clean up the variable holding the arguments
+    return count; // Return the total number of characters printed
+}
