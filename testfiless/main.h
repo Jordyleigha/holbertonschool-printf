@@ -1,8 +1,7 @@
-#ifndef HEADER
-#define HEADER
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#ifndef MAIN_H
+#define MAIN_H
 
-int _printf(const char *format, ...);
+#include <stdarg.h>
+
+/* Custom data structure to represent the format specifier */
+typedef struct {
