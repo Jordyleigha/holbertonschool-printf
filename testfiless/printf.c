@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	// Declare a variable to hold the list of arguments
 	va_list args;
 	// Initializing the variable with the last names parameter before '...'
+        
         // Loop through the format string until the end is reached ('\0')
         while (*format != '\0')
         {
