@@ -19,7 +19,29 @@ Example: If you have a string variable char *name = "John";, using _printf("Name
 %% - Percent Specifier:
 Usage: %% is an escape sequence used to print a literal percent symbol.
 Example: Using _printf("Discount: 20%%"); will output: Discount: 20%.
+ Understanding the Code Flow:
 
+<h3><span>Initialization:</span></h3>
+
+The function begins by checking if the format string is not null.
+It initializes essential variables, including a va_list named args, which is used to handle the variadic arguments provided to the function.
+
+<h3><span>Processing the Format String:</span></h3>
+
+The code iterates through the format string character by character.
+When a % symbol is encountered, it checks the character following % to determine the type of conversion specifier.
+If it's %c, the function prints the corresponding character from the argument list.
+If it's %s, it prints the string from the argument list.
+If it's %%, it prints a literal percent symbol.
+
+<h3><span>Printing Other Characters:</span></h3>
+
+For characters other than %, the function prints them as is.
+Counting Characters and Return:
+The function keeps track of the total count of characters printed.
+After processing the entire format string, it returns the total count.
+
+<h3><span>Conclusion:</span></h3>
 
 
 
