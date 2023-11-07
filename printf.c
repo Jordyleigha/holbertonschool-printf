@@ -1,97 +1,53 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+#include <stdlib.h>
+#include <stddef.h>
 /**
  * _printf - prints a provided string plus a list of variadic arguments
  * @format: the provided string with format specifiers
  *
  * Return: the number of characters in the string
  */
-
 int _printf(const char *format, ...)
 {
-    int count = 0;
-    va_list args;
-    va_start(args, format);
-    while (*format != '\0')
-    {
-        if (*format == '%')
-        {
-            format++;
-            if (*format == 'c')
-            {
-                char c = va_arg(args, int);
-                putchar(c);
-                count++;
-            }
-            else if (*format == 's')
-            {
-                char *str = va_arg(args, char*);
-                while (*str != '\0')
-                {
-                    putchar(*str);
-                    str++;
-                    count++;
-                }
-            }
-            else if (*format == '%')
-            {
-                putchar('%');
-                count++;
-            }
-        }
-        else
-        {
-            putchar(*format);
-            count++;
-        }
-        format++;
-    }
-    va_end(args);
-    return count;
-}
-=======
-
-int _printf(const char *format, ...)
-{
-	int count = 0;
-	va_list args;
-	va_start(args, format);
-	while (*format != '\0')
+	if (format != NULL)
 	{
-		if (*format == '%')
+		int count = 0, i;
+		int (*m)(va_list);
+		va_list args;
+
+		va_start(args, format);
+		i = 0;
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+		while (format != NULL && format[i] != '\0')
 		{
-			format++;
-			if (*format == 'c')
+			if (format[i] == '%')
 			{
-				char c = va_arg(args, int);
-				putchar(c);
-				count++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_args(args, char*);
-				while (*str != '\0')
+				if (format[i + 1] == '%')
 				{
-					putchar(*str);
-					str++;
-					count++;
+					count += _putchar(format[i]);
+					i += 2;
+				}
+				else
+				{
+					m = get_func(format[i + 1]);
+					if (m)
+						count += m(args);
+					else
+						count = _putchar(format[i]) + _putchar(format[i + 1]);
+					i += 2;
 				}
 			}
-			else if (*format == '%')
+			else
 			{
-				putchar('%');
-				count++;
+				count += _putchar(format[i]);
+				i++;
 			}
-
-		else
-		{
-			putchar(*format);
-			count++;
 		}
-		format++;
+		va_end(args);
+		return (count);
 	}
-	va_end(args);
-	return count;
-	}
+	return (-1);
+}
