@@ -38,7 +38,9 @@ If it's %%, it prints a literal percent symbol.
 <h3><span>Printing Other Characters:</span></h3>
 
 For characters other than %, the function prints them as is.
-Counting Characters and Return:
+
+<h3><span>Counting Characters and Return:</span></h3>
+
 The function keeps track of the total count of characters printed.
 After processing the entire format string, it returns the total count.
 
