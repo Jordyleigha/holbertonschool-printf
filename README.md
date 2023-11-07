@@ -20,7 +20,7 @@ Example: If you have a string variable char *name = "John";, using _printf("Name
 Usage: %% is an escape sequence used to print a literal percent symbol.
 Example: Using _printf("Discount: 20%%"); will output: Discount: 20%.
  
-<h2 align="center">Understanding the Code Flow<b></h2>
+<h2 align="center">Understanding the Code<b></h2>
 
 <h3><span>Initialization:</span></h3>
 
